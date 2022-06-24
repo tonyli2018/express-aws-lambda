@@ -1,0 +1,16 @@
+service: express-lambda-demo #Name of your App
+
+provider:
+  name: aws
+  runtime: nodejs12.x # Node JS version
+  #memorySize: 512
+  #timeout: 15
+  stage: dev
+  region: ap-southeast-2 # AWS region
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - http: ANY {proxy+}
+      - http: ANY /
